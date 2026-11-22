@@ -1,0 +1,55 @@
+name: IslandLyric
+options:
+  bundleIdPrefix: com.lorence
+  deploymentTarget:
+    iOS: "18.0"
+  createIntermediateGroups: true
+  groupSortPosition: top
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+    SWIFT_EMIT_LOC_STRINGS: YES
+    IPHONEOS_DEPLOYMENT_TARGET: "18.0"
+
+targets:
+  IslandLyric:
+    type: application
+    platform: iOS
+    sources:
+      - path: IslandLyric
+        excludes:
+          - "Info.plist"
+          - "Assets.xcassets/Contents.json"
+    settings:
+      base:
+        PRODUCT_NAME: IslandLyric
+        PRODUCT_BUNDLE_IDENTIFIER: com.lorence.islandlyric
+        INFOPLIST_FILE: IslandLyric/Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        TARGETED_DEVICE_FAMILY: "1"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        SUPPORTS_MACCATALYST: NO
+    dependencies:
+      - target: LyricWidget
+        embed: true
+
+  LyricWidget:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: LyricWidget
+        excludes:
+          - "Info.plist"
+      - path: IslandLyric/Shared
+    settings:
+      base:
+        PRODUCT_NAME: LyricWidget
+        PRODUCT_BUNDLE_IDENTIFIER: com.lorence.islandlyric.widget
+        INFOPLIST_FILE: LyricWidget/Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        TARGETED_DEVICE_FAMILY: "1"
+        SKIP_INSTALL: YES
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor

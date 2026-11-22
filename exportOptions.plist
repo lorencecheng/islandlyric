@@ -1,0 +1,8 @@
+{
+  "method" : "development",
+  "signingStyle" : "automatic",
+  "stripSwiftSymbols" : true,
+  "teamID" : "YOUR_TEAM_ID",
+  "destination" : "export",
+  "compileBitcode" : false
+}
